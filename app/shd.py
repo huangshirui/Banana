@@ -4,7 +4,7 @@
 import sys
 import time
 
-from tools.Daemon import Daemon
+from utils.daemon import Daemon
 
 
 class SmartHomeDaemon(Daemon):
