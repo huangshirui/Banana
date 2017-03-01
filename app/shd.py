@@ -1,9 +1,10 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 import sys
 import time
 
-from app.tools.Daemon import Daemon
+from tools.Daemon import Daemon
 
 
 class SmartHomeDaemon(Daemon):
@@ -22,9 +23,8 @@ if __name__ == "__main__":
         elif 'restart' == sys.argv[1]:
             daemon.restart()
         else:
-            print "Unknown command"
-            sys.exit(2)
-        sys.exit(0)
+            print('Unknown command {!r}'.format(sys.argv[1]), file=sys.stderr)
+            raise SystemExit(1)
     else:
-        print "usage: %s start|stop|restart" % sys.argv[0]
-        sys.exit(2)
+        print('Usage: {} [start|stop|restart]'.format(sys.argv[0]), file=sys.stderr)
+        raise SystemExit(1)
