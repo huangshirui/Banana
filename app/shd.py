@@ -4,16 +4,18 @@
 import sys
 import time
 
+from core.dispatcher import Dispatcher
 from utils.daemon import Daemon
+from utils.log import configure_logging
 
 
 class SmartHomeDaemon(Daemon):
     def run(self):
-        while True:
-            time.sleep(1)
+        Dispatcher().run()
 
 
 if __name__ == "__main__":
+    configure_logging()
     daemon = SmartHomeDaemon('/tmp/shd.pid')
     if len(sys.argv) == 2:
         if 'start' == sys.argv[1]:
